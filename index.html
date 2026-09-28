@@ -1,0 +1,783 @@
+```html
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>THUMBLY — YouTube Thumbnails</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #111827;
+}
+
+/* NAVBAR */
+
+nav {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1100px, 92%);
+    padding: 15px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(18px);
+
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+
+    box-shadow: 0 15px 45px rgba(0,0,0,.08);
+
+    z-index: 100;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #287cff;
+}
+
+nav a {
+    text-decoration: none;
+    color: #374151;
+    font-weight: 700;
+    margin-left: 25px;
+}
+
+nav a:hover {
+    color: #287cff;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 800px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 140px 20px 80px;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(40,124,255,.15), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(221,174,45,.18), transparent 30%);
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 9px 16px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 50px;
+
+    font-weight: 800;
+    font-size: 13px;
+
+    margin-bottom: 25px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.06);
+}
+
+.badge span {
+    color: #287cff;
+}
+
+h1 {
+    font-size: clamp(50px, 8vw, 95px);
+    line-height: .92;
+    letter-spacing: -6px;
+    font-weight: 900;
+}
+
+.gold {
+    color: #d6a72c;
+}
+
+.blue {
+    color: #287cff;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 30px auto;
+
+    color: #667085;
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+
+    border: none;
+    border-radius: 13px;
+
+    padding: 15px 24px;
+
+    font-weight: 800;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.primary {
+    color: white;
+    background: linear-gradient(135deg,#287cff,#1256d5);
+
+    box-shadow: 0 12px 30px rgba(40,124,255,.25);
+}
+
+.secondary {
+    background: white;
+    color: #111827;
+
+    border: 1px solid #e5e7eb;
+}
+
+/* GENERAL */
+
+section {
+    width: min(1100px,92%);
+    margin: auto;
+    padding: 90px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title small {
+    color: #287cff;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.section-title h2 {
+    font-size: 42px;
+    margin-top: 10px;
+}
+
+/* SERVICES */
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 24px;
+
+    padding: 28px;
+
+    box-shadow: 0 15px 50px rgba(0,0,0,.06);
+
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 25px 60px rgba(0,0,0,.1);
+}
+
+.icon {
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 15px;
+
+    background: linear-gradient(135deg,#edf4ff,#fff6d8);
+
+    font-size: 25px;
+
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #667085;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.price {
+    font-size: 32px;
+    font-weight: 900;
+
+    margin: 20px 0;
+}
+
+.price span {
+    color: #667085;
+    font-size: 13px;
+}
+
+/* PORTFOLIO */
+
+.portfolio {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+}
+
+.work {
+    height: 190px;
+
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(135deg,#111827,#287cff);
+
+    color: white;
+
+    font-size: 24px;
+    font-weight: 900;
+
+    overflow: hidden;
+
+    transition: .3s;
+}
+
+.work:nth-child(2) {
+    background:
+        linear-gradient(135deg,#111827,#d6a72c);
+}
+
+.work:nth-child(3) {
+    background:
+        linear-gradient(135deg,#287cff,#73a8ff);
+}
+
+.work:hover {
+    transform: scale(1.02);
+}
+
+/* ORDER */
+
+.order-box {
+    max-width: 650px;
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.08);
+}
+
+label {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    margin: 15px 0 7px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #dce1e8;
+
+    background: #f8fafc;
+
+    border-radius: 11px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #287cff;
+}
+
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+/* PAYMENT */
+
+.payment {
+    margin-top: 25px;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background: #fff8dc;
+
+    border: 1px solid #eed48b;
+
+    color: #72590e;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+/* FOOTER */
+
+footer {
+    background: #0e1117;
+    color: white;
+
+    text-align: center;
+
+    padding: 45px 20px;
+}
+
+footer p {
+    margin-top: 8px;
+
+    color: #8b95a5;
+
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px) {
+
+    .services,
+    .portfolio {
+        grid-template-columns: 1fr;
+    }
+
+    nav div:nth-child(2) {
+        display: none;
+    }
+
+    h1 {
+        letter-spacing: -3px;
+    }
+
+    .section-title h2 {
+        font-size: 34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        THUMB<span>LY</span>
+    </div>
+
+    <div>
+        <a href="#services">Služby</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#order">Objednat</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            <span>●</span> YOUTUBE DESIGN STUDIO
+        </div>
+
+        <h1>
+            MAKE YOUR<br>
+            VIDEOS <span class="gold">POP.</span>
+        </h1>
+
+        <p>
+            Moderní YouTube thumbnails vytvořené tak,
+            aby tvoje video vypadalo profesionálně.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#order" class="btn primary">
+                Objednat thumbnail →
+            </a>
+
+            <a href="#portfolio" class="btn secondary">
+                Portfolio
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+    <div class="section-title">
+
+        <small>SLUŽBY</small>
+
+        <h2>Vyber si design.</h2>
+
+    </div>
+
+
+    <div class="services">
+
+
+        <div class="card">
+
+            <div class="icon">🎨</div>
+
+            <h3>1 Thumbnail</h3>
+
+            <p>
+                Jeden profesionální thumbnail
+                podle tvého videa a požadavků.
+            </p>
+
+            <div class="price">
+                100 Kč
+                <span>/ kus</span>
+            </div>
+
+            <a href="#order" class="btn primary">
+                Objednat
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🔥</div>
+
+            <h3>3 Thumbnails</h3>
+
+            <p>
+                Balíček tří thumbnailů
+                pro více videí.
+            </p>
+
+            <div class="price">
+                250 Kč
+                <span>/ 3 ks</span>
+            </div>
+
+            <a href="#order" class="btn primary">
+                Objednat
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">👑</div>
+
+            <h3>5 Thumbnails</h3>
+
+            <p>
+                Větší balíček pro pravidelné
+                YouTube tvůrce.
+            </p>
+
+            <div class="price">
+                400 Kč
+                <span>/ 5 ks</span>
+            </div>
+
+            <a href="#order" class="btn primary">
+                Objednat
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- PORTFOLIO -->
+
+<section id="portfolio">
+
+    <div class="section-title">
+
+        <small>PORTFOLIO</small>
+
+        <h2>Moje práce.</h2>
+
+    </div>
+
+
+    <div class="portfolio">
+
+        <div class="work">
+            THUMBNAIL #01
+        </div>
+
+        <div class="work">
+            THUMBNAIL #02
+        </div>
+
+        <div class="work">
+            THUMBNAIL #03
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ORDER -->
+
+<section id="order">
+
+    <div class="section-title">
+
+        <small>OBJEDNÁVKA</small>
+
+        <h2>Chceš vlastní thumbnail?</h2>
+
+    </div>
+
+
+    <div class="order-box">
+
+        <form id="orderForm">
+
+            <label>
+                Tvoje jméno / nick
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="např. Player123"
+                required
+            >
+
+
+            <label>
+                Kontakt
+            </label>
+
+            <input
+                type="text"
+                id="contact"
+                placeholder="Discord / e-mail"
+                required
+            >
+
+
+            <label>
+                Počet thumbnailů
+            </label>
+
+            <select id="amount">
+
+                <option value="1">
+                    1 thumbnail — 100 Kč
+                </option>
+
+                <option value="3">
+                    3 thumbnails — 250 Kč
+                </option>
+
+                <option value="5">
+                    5 thumbnails — 400 Kč
+                </option>
+
+            </select>
+
+
+            <label>
+                Co chceš na thumbnailu?
+            </label>
+
+            <textarea
+                id="details"
+                placeholder="Popiš svoje video, text, styl, barvy..."
+                required
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="btn primary"
+                style="width:100%;margin-top:20px;"
+            >
+                Odeslat objednávku →
+            </button>
+
+
+            <div class="payment">
+
+                💳 <b>Platba:</b><br>
+
+                Po potvrzení objednávky se
+                domluvíme na dostupné platební metodě.
+                Minimální objednávka je 100 Kč.
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <strong>
+        THUMB<span style="color:#287cff;">LY</span>
+    </strong>
+
+    <p>
+        YouTube Design Studio • © <span id="year"></span>
+    </p>
+
+</footer>
+
+
+<script>
+
+document
+.getElementById("orderForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value;
+
+    const contact =
+        document.getElementById("contact").value;
+
+    const amount =
+        document.getElementById("amount");
+
+    const details =
+        document.getElementById("details").value;
+
+
+    if (!name || !contact || !details) {
+
+        alert("Vyplň prosím všechna pole.");
+
+        return;
+    }
+
+
+    let price;
+
+    if (amount.value === "1") {
+        price = 100;
+    }
+
+    if (amount.value === "3") {
+        price = 250;
+    }
+
+    if (amount.value === "5") {
+        price = 400;
+    }
+
+
+    alert(
+        "OBJEDNÁVKA PŘIPRAVENA!\\n\\n" +
+        "Jméno: " + name + "\\n" +
+        "Kontakt: " + contact + "\\n" +
+        "Cena: " + price + " Kč\\n\\n" +
+        "Objednávku teď musíš napojit na skutečné odesílání formulářů."
+    );
+
+});
+
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
+```
