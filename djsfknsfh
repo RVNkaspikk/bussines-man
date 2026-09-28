@@ -1,0 +1,456 @@
+```html
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomoc s operací ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Inter, sans-serif;
+    background: #070707;
+    color: white;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: #ff2448;
+    filter: blur(180px);
+    opacity: .13;
+    top: -250px;
+    left: -200px;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: #8b1cff;
+    filter: blur(190px);
+    opacity: .08;
+    bottom: -250px;
+    right: -150px;
+    pointer-events: none;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(7,7,7,.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #ff3657;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+nav a:hover {
+    color: white;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 130px 20px 80px;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 9px 15px;
+    border-radius: 999px;
+    background: rgba(255,45,80,.08);
+    border: 1px solid rgba(255,45,80,.3);
+    color: #ff5570;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(50px, 9vw, 105px);
+    line-height: .9;
+    letter-spacing: -6px;
+    font-weight: 900;
+}
+
+h1 span {
+    color: #ff3154;
+    text-shadow: 0 0 50px rgba(255,40,80,.35);
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 30px auto;
+    color: #999;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    padding: 16px 26px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 900;
+    transition: .25s;
+}
+
+.btn-main {
+    color: white;
+    background: linear-gradient(135deg,#ff3154,#d9163d);
+    box-shadow: 0 15px 45px rgba(255,30,70,.2);
+}
+
+.btn-main:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 55px rgba(255,30,70,.35);
+}
+
+section {
+    padding: 100px 7%;
+}
+
+.container {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title small {
+    color: #ff4564;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.section-title h2 {
+    font-size: clamp(35px,5vw,60px);
+    letter-spacing: -3px;
+    margin-top: 8px;
+}
+
+.story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.box {
+    background: rgba(15,15,15,.85);
+    border: 1px solid #242424;
+    border-radius: 20px;
+    padding: 35px;
+}
+
+.box h3 {
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.box p {
+    color: #999;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.goal {
+    max-width: 800px;
+    margin: auto;
+    padding: 45px;
+    border-radius: 25px;
+    background:
+        radial-gradient(circle at 90% 10%,rgba(255,40,80,.18),transparent 35%),
+        #101010;
+    border: 1px solid rgba(255,50,80,.3);
+}
+
+.goal-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: end;
+    margin-bottom: 18px;
+}
+
+.amount {
+    font-size: 42px;
+    font-weight: 900;
+}
+
+.target {
+    color: #777;
+    font-size: 14px;
+}
+
+.progress {
+    width: 100%;
+    height: 14px;
+    background: #242424;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg,#ff3154,#ff7189);
+}
+
+.goal-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    color: #777;
+    font-size: 12px;
+}
+
+.donate {
+    text-align: center;
+    margin-top: 35px;
+}
+
+.donate p {
+    color: #777;
+    margin-bottom: 18px;
+    font-size: 13px;
+}
+
+.heart {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.notice {
+    margin-top: 25px;
+    padding: 16px;
+    border-radius: 12px;
+    background: #0a0a0a;
+    border: 1px solid #202020;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+footer {
+    border-top: 1px solid #181818;
+    padding: 35px 7%;
+    text-align: center;
+    color: #555;
+    font-size: 12px;
+}
+
+@media(max-width:700px) {
+    nav {
+        padding: 18px 5%;
+    }
+
+    section {
+        padding: 75px 5%;
+    }
+
+    h1 {
+        letter-spacing: -3px;
+    }
+
+    .story {
+        grid-template-columns: 1fr;
+    }
+
+    .goal {
+        padding: 28px;
+    }
+
+    .goal-top {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .amount {
+        font-size: 34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">HELP<span>ME</span></div>
+    <a href="#donate">PŘISPĚT ❤️</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+
+        <div class="badge">OSOBNÍ SBÍRKA • 2026</div>
+
+        <h1>
+            POMOZ MI<br>
+            ZVLÁDNOUT <span>OPERACI.</span>
+        </h1>
+
+        <p>
+            Sbírám prostředky na náklady spojené s plánovanou operací.
+            Každý příspěvek, i malý, mi může pomoct přiblížit se k cíli.
+        </p>
+
+        <a class="btn btn-main" href="#donate">
+            CHCI PŘISPĚT ❤️
+        </a>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="section-title">
+            <small>Můj příběh</small>
+            <h2>Proč vybírám?</h2>
+        </div>
+
+        <div class="story">
+
+            <div class="box">
+                <h3>❤️ Potřebuji pomoc</h3>
+                <p>
+                    Potýkám se se zdravotním problémem, kvůli kterému
+                    potřebuji podstoupit operaci. Náklady spojené s léčbou
+                    jsou pro mě vysoké, a proto se snažím získat pomoc
+                    od lidí, kteří se rozhodnou přispět.
+                </p>
+            </div>
+
+            <div class="box">
+                <h3>🎯 Můj cíl</h3>
+                <p>
+                    Celkový cíl sbírky je <strong>100 000 Kč</strong>.
+                    Peníze budou použity na náklady související
+                    s operací a léčbou.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section id="donate">
+
+    <div class="container">
+
+        <div class="section-title">
+            <small>Pomoc</small>
+            <h2>Každý příspěvek se počítá.</h2>
+        </div>
+
+        <div class="goal">
+
+            <div class="heart">❤️</div>
+
+            <div class="goal-top">
+                <div>
+                    <div class="amount">0 Kč</div>
+                    <div class="target">vybráno</div>
+                </div>
+
+                <div class="target">
+                    CÍL<br>
+                    <strong>100 000 Kč</strong>
+                </div>
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+
+            <div class="goal-info">
+                <span>0 %</span>
+                <span>100 000 Kč</span>
+            </div>
+
+            <div class="donate">
+                <p>
+                    Přispět můžeš libovolnou částkou přes PayPal.
+                </p>
+
+                <!-- NAHRAĎ TENTO ODKAZ SVÝM SKUTEČNÝM PAYPAL ODKAZEM -->
+                <a
+                    class="btn btn-main"
+                    href="https://paypal.me/TVUJ_PAYPAL"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    ❤️ PŘISPĚT PŘES PAYPAL
+                </a>
+            </div>
+
+            <div class="notice">
+                Toto je osobní sbírka, nikoliv registrovaná charitativní
+                organizace. Informace na této stránce by měly odpovídat
+                skutečnému účelu sbírky.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 • Děkuji každému, kdo pomůže ❤️
+</footer>
+
+</body>
+</html>
+```
