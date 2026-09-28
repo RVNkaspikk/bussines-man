@@ -5,133 +5,158 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>THUMBLY — YouTube Thumbnails</title>
+<title>CREATORX — Creator Pack</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+
+:root {
+    --blue: #287cff;
+    --gold: #d8a92e;
+    --dark: #0b0e14;
+    --text: #12151c;
+    --muted: #697386;
+    --bg: #f5f7fb;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
-    color: #111827;
+    font-family: Inter, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
 }
 
-/* NAVBAR */
+html {
+    scroll-behavior: smooth;
+}
+
+/* NAV */
 
 nav {
     position: fixed;
     top: 18px;
     left: 50%;
     transform: translateX(-50%);
+
     width: min(1100px, 92%);
+
     padding: 15px 22px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background: rgba(255,255,255,.82);
+    backdrop-filter: blur(20px);
 
-    background: rgba(255,255,255,.85);
-    backdrop-filter: blur(18px);
-
-    border: 1px solid #e5e7eb;
+    border: 1px solid rgba(255,255,255,.9);
     border-radius: 18px;
 
-    box-shadow: 0 15px 45px rgba(0,0,0,.08);
+    box-shadow: 0 15px 50px rgba(0,0,0,.08);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     z-index: 100;
 }
 
 .logo {
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 900;
 }
 
 .logo span {
-    color: #287cff;
+    color: var(--blue);
 }
 
-nav a {
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
     text-decoration: none;
-    color: #374151;
+    color: #4b5563;
+    font-size: 14px;
     font-weight: 700;
-    margin-left: 25px;
 }
 
-nav a:hover {
-    color: #287cff;
+.nav-links a:hover {
+    color: var(--blue);
 }
 
 /* HERO */
 
 .hero {
-    min-height: 800px;
+    min-height: 850px;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     text-align: center;
 
     padding: 140px 20px 80px;
 
     background:
-        radial-gradient(circle at 15% 20%, rgba(40,124,255,.15), transparent 30%),
-        radial-gradient(circle at 85% 20%, rgba(221,174,45,.18), transparent 30%);
+        radial-gradient(circle at 15% 15%, rgba(40,124,255,.15), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(216,169,46,.17), transparent 30%);
 }
 
 .hero-content {
-    max-width: 900px;
+    max-width: 950px;
 }
 
 .badge {
     display: inline-block;
 
-    padding: 9px 16px;
-
     background: white;
 
-    border: 1px solid #e5e7eb;
-    border-radius: 50px;
+    padding: 9px 16px;
 
-    font-weight: 800;
+    border-radius: 999px;
+
+    border: 1px solid #e5e7eb;
+
     font-size: 13px;
+    font-weight: 800;
 
     margin-bottom: 25px;
 
-    box-shadow: 0 8px 25px rgba(0,0,0,.06);
+    box-shadow: 0 8px 30px rgba(0,0,0,.06);
 }
 
 .badge span {
-    color: #287cff;
+    color: var(--blue);
 }
 
-h1 {
-    font-size: clamp(50px, 8vw, 95px);
-    line-height: .92;
+.hero h1 {
+    font-size: clamp(52px, 9vw, 100px);
+    line-height: .9;
     letter-spacing: -6px;
     font-weight: 900;
 }
 
 .gold {
-    color: #d6a72c;
+    color: var(--gold);
 }
 
 .blue {
-    color: #287cff;
+    color: var(--blue);
 }
 
 .hero p {
     max-width: 650px;
+
     margin: 30px auto;
 
-    color: #667085;
+    color: var(--muted);
 
-    font-size: 18px;
     line-height: 1.7;
+
+    font-size: 17px;
 }
 
 .buttons {
@@ -144,12 +169,13 @@ h1 {
 .btn {
     display: inline-block;
 
-    border: none;
-    border-radius: 13px;
+    border: 0;
+    border-radius: 14px;
 
-    padding: 15px 24px;
+    padding: 15px 25px;
 
     font-weight: 800;
+
     text-decoration: none;
 
     cursor: pointer;
@@ -163,23 +189,26 @@ h1 {
 
 .primary {
     color: white;
-    background: linear-gradient(135deg,#287cff,#1256d5);
 
-    box-shadow: 0 12px 30px rgba(40,124,255,.25);
+    background:
+        linear-gradient(135deg, #287cff, #1556d5);
+
+    box-shadow: 0 14px 35px rgba(40,124,255,.25);
 }
 
 .secondary {
     background: white;
-    color: #111827;
+    color: var(--text);
 
     border: 1px solid #e5e7eb;
 }
 
-/* GENERAL */
+/* SECTIONS */
 
 section {
     width: min(1100px,92%);
     margin: auto;
+
     padding: 90px 0;
 }
 
@@ -189,196 +218,278 @@ section {
 }
 
 .section-title small {
-    color: #287cff;
+    color: var(--blue);
+
     font-weight: 900;
+
     letter-spacing: 2px;
 }
 
 .section-title h2 {
     font-size: 42px;
-    margin-top: 10px;
+
+    margin-top: 8px;
+
+    letter-spacing: -2px;
 }
 
-/* SERVICES */
+/* PACK */
 
-.services {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
-}
+.pack {
+    max-width: 800px;
 
-.card {
+    margin: auto;
+
     background: white;
 
     border: 1px solid #e5e7eb;
-    border-radius: 24px;
 
-    padding: 28px;
+    border-radius: 30px;
 
-    box-shadow: 0 15px 50px rgba(0,0,0,.06);
+    padding: 40px;
 
-    transition: .3s;
+    box-shadow: 0 25px 70px rgba(0,0,0,.08);
+
+    position: relative;
+
+    overflow: hidden;
 }
 
-.card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 25px 60px rgba(0,0,0,.1);
+.pack::before {
+    content: "BEST SELLER";
+
+    position: absolute;
+
+    top: 22px;
+    right: -42px;
+
+    transform: rotate(35deg);
+
+    background: var(--gold);
+
+    color: white;
+
+    padding: 8px 50px;
+
+    font-size: 11px;
+
+    font-weight: 900;
 }
 
-.icon {
-    width: 55px;
-    height: 55px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 15px;
-
-    background: linear-gradient(135deg,#edf4ff,#fff6d8);
-
-    font-size: 25px;
-
-    margin-bottom: 20px;
+.pack-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: center;
 }
 
-.card h3 {
-    font-size: 21px;
-    margin-bottom: 10px;
+.pack h3 {
+    font-size: 30px;
 }
 
-.card p {
-    color: #667085;
-    line-height: 1.6;
-    font-size: 14px;
+.pack-desc {
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    margin-top: 10px;
 }
 
 .price {
-    font-size: 32px;
+    font-size: 48px;
+
     font-weight: 900;
 
-    margin: 20px 0;
+    white-space: nowrap;
 }
 
-.price span {
-    color: #667085;
+.price small {
+    color: var(--muted);
+
     font-size: 13px;
+
+    font-weight: 600;
+}
+
+.items {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin: 30px 0;
+}
+
+.item {
+    padding: 15px;
+
+    background: #f7f9fc;
+
+    border-radius: 13px;
+
+    font-weight: 700;
+
+    font-size: 14px;
+}
+
+.pay {
+    width: 100%;
+
+    text-align: center;
+
+    background: var(--dark);
+
+    color: white;
+
+    padding: 17px;
+
+    border-radius: 14px;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    text-decoration: none;
+
+    display: block;
+
+    transition: .25s;
+}
+
+.pay:hover {
+    background: var(--blue);
+
+    transform: translateY(-2px);
+}
+
+.payment-note {
+    margin-top: 13px;
+
+    color: var(--muted);
+
+    text-align: center;
+
+    font-size: 12px;
+
+    line-height: 1.5;
 }
 
 /* PORTFOLIO */
 
 .portfolio {
     display: grid;
+
     grid-template-columns: repeat(3,1fr);
+
     gap: 18px;
 }
 
 .work {
-    height: 190px;
+    height: 200px;
 
     border-radius: 20px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
 
-    background:
-        linear-gradient(135deg,#111827,#287cff);
+    place-items: center;
 
     color: white;
 
-    font-size: 24px;
+    font-size: 22px;
+
     font-weight: 900;
 
-    overflow: hidden;
+    background:
+        linear-gradient(135deg,#111827,#287cff);
 
     transition: .3s;
 }
 
 .work:nth-child(2) {
     background:
-        linear-gradient(135deg,#111827,#d6a72c);
+        linear-gradient(135deg,#111827,#d8a92e);
 }
 
 .work:nth-child(3) {
     background:
-        linear-gradient(135deg,#287cff,#73a8ff);
+        linear-gradient(135deg,#287cff,#72a8ff);
 }
 
 .work:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
 }
 
 /* ORDER */
 
-.order-box {
+.order {
     max-width: 650px;
+
     margin: auto;
 
     background: white;
 
-    padding: 35px;
+    border: 1px solid #e5e7eb;
 
     border-radius: 25px;
 
-    border: 1px solid #e5e7eb;
+    padding: 35px;
 
-    box-shadow: 0 20px 60px rgba(0,0,0,.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,.07);
 }
 
 label {
     display: block;
 
-    font-size: 13px;
-    font-weight: 800;
-
     margin: 15px 0 7px;
+
+    font-size: 13px;
+
+    font-weight: 800;
 }
 
 input,
-textarea,
-select {
+textarea {
     width: 100%;
 
     padding: 14px;
 
-    border: 1px solid #dce1e8;
+    border: 1px solid #dce2ea;
 
     background: #f8fafc;
 
     border-radius: 11px;
 
-    outline: none;
+    font-family: inherit;
 
-    font-size: 14px;
+    outline: none;
 }
 
 input:focus,
-textarea:focus,
-select:focus {
-    border-color: #287cff;
+textarea:focus {
+    border-color: var(--blue);
 }
 
 textarea {
     min-height: 130px;
+
     resize: vertical;
 }
 
-/* PAYMENT */
+.info {
+    margin-top: 18px;
 
-.payment {
-    margin-top: 25px;
+    padding: 15px;
 
-    padding: 20px;
+    border-radius: 12px;
 
-    border-radius: 15px;
+    background: #fff8dd;
 
-    background: #fff8dc;
+    border: 1px solid #efd98e;
 
-    border: 1px solid #eed48b;
+    color: #765c12;
 
-    color: #72590e;
-
-    font-size: 13px;
+    font-size: 12px;
 
     line-height: 1.6;
 }
@@ -386,7 +497,8 @@ textarea {
 /* FOOTER */
 
 footer {
-    background: #0e1117;
+    background: #0b0e14;
+
     color: white;
 
     text-align: center;
@@ -395,80 +507,87 @@ footer {
 }
 
 footer p {
-    margin-top: 8px;
+    color: #8791a2;
 
-    color: #8b95a5;
+    margin-top: 8px;
 
     font-size: 13px;
 }
 
 /* MOBILE */
 
-@media(max-width:800px) {
+@media(max-width:750px) {
 
-    .services,
-    .portfolio {
-        grid-template-columns: 1fr;
-    }
-
-    nav div:nth-child(2) {
+    .nav-links {
         display: none;
     }
 
-    h1 {
+    .hero h1 {
         letter-spacing: -3px;
+    }
+
+    .pack-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .items,
+    .portfolio {
+        grid-template-columns: 1fr;
     }
 
     .section-title h2 {
         font-size: 34px;
     }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
 
     <div class="logo">
-        THUMB<span>LY</span>
+        CREATOR<span>X</span>
     </div>
 
-    <div>
-        <a href="#services">Služby</a>
+    <div class="nav-links">
+
+        <a href="#pack">Pack</a>
+
         <a href="#portfolio">Portfolio</a>
+
         <a href="#order">Objednat</a>
+
     </div>
 
 </nav>
 
-
-<!-- HERO -->
 
 <header class="hero">
 
     <div class="hero-content">
 
         <div class="badge">
-            <span>●</span> YOUTUBE DESIGN STUDIO
+            <span>●</span> CREATOR DESIGN STUDIO
         </div>
 
         <h1>
-            MAKE YOUR<br>
-            VIDEOS <span class="gold">POP.</span>
+            BUILD YOUR<br>
+            <span class="gold">CREATOR</span><br>
+            <span class="blue">BRAND.</span>
         </h1>
 
         <p>
-            Moderní YouTube thumbnails vytvořené tak,
-            aby tvoje video vypadalo profesionálně.
+            Kompletní designový balíček pro malé YouTubery,
+            streamery a další content creatory.
         </p>
 
         <div class="buttons">
 
-            <a href="#order" class="btn primary">
-                Objednat thumbnail →
+            <a href="#pack" class="btn primary">
+                Zobrazit Creator Pack →
             </a>
 
             <a href="#portfolio" class="btn secondary">
@@ -482,97 +601,84 @@ footer p {
 </header>
 
 
-<!-- SERVICES -->
-
-<section id="services">
+<section id="pack">
 
     <div class="section-title">
 
-        <small>SLUŽBY</small>
+        <small>BEST SELLER</small>
 
-        <h2>Vyber si design.</h2>
+        <h2>Creator Pack</h2>
 
     </div>
 
 
-    <div class="services">
+    <div class="pack">
 
+        <div class="pack-top">
 
-        <div class="card">
+            <div>
 
-            <div class="icon">🎨</div>
+                <h3>CREATOR PACK</h3>
 
-            <h3>1 Thumbnail</h3>
+                <p class="pack-desc">
+                    Všechno základní pro profesionálnější
+                    vzhled tvého kanálu.
+                </p>
 
-            <p>
-                Jeden profesionální thumbnail
-                podle tvého videa a požadavků.
-            </p>
-
-            <div class="price">
-                100 Kč
-                <span>/ kus</span>
             </div>
 
-            <a href="#order" class="btn primary">
-                Objednat
-            </a>
+            <div class="price">
+                499 Kč
+                <small>/ pack</small>
+            </div>
 
         </div>
 
 
-        <div class="card">
+        <div class="items">
 
-            <div class="icon">🔥</div>
-
-            <h3>3 Thumbnails</h3>
-
-            <p>
-                Balíček tří thumbnailů
-                pro více videí.
-            </p>
-
-            <div class="price">
-                250 Kč
-                <span>/ 3 ks</span>
+            <div class="item">
+                🎨 3× YouTube Thumbnail
             </div>
 
-            <a href="#order" class="btn primary">
-                Objednat
-            </a>
+            <div class="item">
+                🖼️ 1× Profilovka
+            </div>
+
+            <div class="item">
+                🏷️ 1× YouTube Banner
+            </div>
+
+            <div class="item">
+                🎬 1× Short Edit
+            </div>
 
         </div>
 
 
-        <div class="card">
+        <!--
+            DŮLEŽITÉ:
+            Sem později vlož svůj skutečný platební odkaz.
+            Nikdy sem nevkládej číslo karty, CVC nebo expiraci.
+        -->
 
-            <div class="icon">👑</div>
+        <a
+            class="pay"
+            href="#"
+            id="paymentButton"
+        >
+            💳 PAY 499 Kč
+        </a>
 
-            <h3>5 Thumbnails</h3>
-
-            <p>
-                Větší balíček pro pravidelné
-                YouTube tvůrce.
-            </p>
-
-            <div class="price">
-                400 Kč
-                <span>/ 5 ks</span>
-            </div>
-
-            <a href="#order" class="btn primary">
-                Objednat
-            </a>
-
+        <div class="payment-note">
+            Po kliknutí bude zákazník přesměrován
+            na bezpečnou platební stránku.
         </div>
-
 
     </div>
 
 </section>
 
-
-<!-- PORTFOLIO -->
 
 <section id="portfolio">
 
@@ -580,7 +686,7 @@ footer p {
 
         <small>PORTFOLIO</small>
 
-        <h2>Moje práce.</h2>
+        <h2>Ukázky práce</h2>
 
     </div>
 
@@ -588,15 +694,15 @@ footer p {
     <div class="portfolio">
 
         <div class="work">
-            THUMBNAIL #01
+            THUMBNAIL 01
         </div>
 
         <div class="work">
-            THUMBNAIL #02
+            THUMBNAIL 02
         </div>
 
         <div class="work">
-            THUMBNAIL #03
+            THUMBNAIL 03
         </div>
 
     </div>
@@ -604,75 +710,46 @@ footer p {
 </section>
 
 
-<!-- ORDER -->
-
 <section id="order">
 
     <div class="section-title">
 
-        <small>OBJEDNÁVKA</small>
+        <small>ORDER</small>
 
-        <h2>Chceš vlastní thumbnail?</h2>
+        <h2>Objednej si pack</h2>
 
     </div>
 
 
-    <div class="order-box">
+    <div class="order">
 
         <form id="orderForm">
 
-            <label>
-                Tvoje jméno / nick
-            </label>
+            <label>Jméno / Nick</label>
 
             <input
-                type="text"
                 id="name"
-                placeholder="např. Player123"
+                type="text"
+                placeholder="Tvoje jméno"
                 required
             >
 
 
-            <label>
-                Kontakt
-            </label>
+            <label>Kontakt</label>
 
             <input
-                type="text"
                 id="contact"
-                placeholder="Discord / e-mail"
+                type="text"
+                placeholder="Discord nebo e-mail"
                 required
             >
 
 
-            <label>
-                Počet thumbnailů
-            </label>
-
-            <select id="amount">
-
-                <option value="1">
-                    1 thumbnail — 100 Kč
-                </option>
-
-                <option value="3">
-                    3 thumbnails — 250 Kč
-                </option>
-
-                <option value="5">
-                    5 thumbnails — 400 Kč
-                </option>
-
-            </select>
-
-
-            <label>
-                Co chceš na thumbnailu?
-            </label>
+            <label>Co chceš vytvořit?</label>
 
             <textarea
                 id="details"
-                placeholder="Popiš svoje video, text, styl, barvy..."
+                placeholder="Popiš svůj kanál, styl, barvy a co potřebuješ..."
                 required
             ></textarea>
 
@@ -680,20 +757,16 @@ footer p {
             <button
                 type="submit"
                 class="btn primary"
-                style="width:100%;margin-top:20px;"
+                style="width:100%;margin-top:18px;"
             >
                 Odeslat objednávku →
             </button>
 
 
-            <div class="payment">
-
-                💳 <b>Platba:</b><br>
-
-                Po potvrzení objednávky se
-                domluvíme na dostupné platební metodě.
-                Minimální objednávka je 100 Kč.
-
+            <div class="info">
+                💰 Cena Creator Packu: <b>499 Kč</b>.<br>
+                Platba probíhá přes bezpečný platební odkaz.
+                Platební údaje se do této stránky nikdy nevkládají.
             </div>
 
         </form>
@@ -703,22 +776,56 @@ footer p {
 </section>
 
 
-<!-- FOOTER -->
-
 <footer>
 
     <strong>
-        THUMB<span style="color:#287cff;">LY</span>
+        CREATOR<span style="color:#287cff">X</span>
     </strong>
 
     <p>
-        YouTube Design Studio • © <span id="year"></span>
+        Creator Design Studio • © <span id="year"></span>
     </p>
 
 </footer>
 
 
 <script>
+
+const PAYMENT_LINK = "#";
+
+/*
+   AŽ BUDEŠ MÍT SKUTEČNÝ PAYMENT LINK:
+
+   změň pouze:
+
+   const PAYMENT_LINK = "#";
+
+   na svůj bezpečný platební odkaz.
+
+   Číslo karty, CVC ani expiraci sem NEDÁVEJ.
+*/
+
+document
+.getElementById("paymentButton")
+.addEventListener("click", function(event) {
+
+    if (PAYMENT_LINK === "#") {
+
+        event.preventDefault();
+
+        alert(
+            "Platební odkaz ještě není nastaven. " +
+            "Nejdříve vytvoř svůj oficiální payment link."
+        );
+
+    } else {
+
+        this.href = PAYMENT_LINK;
+
+    }
+
+});
+
 
 document
 .getElementById("orderForm")
@@ -732,42 +839,16 @@ document
     const contact =
         document.getElementById("contact").value;
 
-    const amount =
-        document.getElementById("amount");
-
     const details =
         document.getElementById("details").value;
 
 
-    if (!name || !contact || !details) {
-
-        alert("Vyplň prosím všechna pole.");
-
-        return;
-    }
-
-
-    let price;
-
-    if (amount.value === "1") {
-        price = 100;
-    }
-
-    if (amount.value === "3") {
-        price = 250;
-    }
-
-    if (amount.value === "5") {
-        price = 400;
-    }
-
-
     alert(
-        "OBJEDNÁVKA PŘIPRAVENA!\\n\\n" +
+        "Objednávka připravena!\\n\\n" +
         "Jméno: " + name + "\\n" +
-        "Kontakt: " + contact + "\\n" +
-        "Cena: " + price + " Kč\\n\\n" +
-        "Objednávku teď musíš napojit na skutečné odesílání formulářů."
+        "Kontakt: " + contact +
+        "\\n\\n" +
+        "Teď je potřeba formulář napojit na službu pro příjem objednávek."
     );
 
 });
