@@ -2,397 +2,363 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CREATORX — Creator Pack</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomoc má smysl ❤️</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
+}
 
-    body {
-      background: #07090d;
-      color: white;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    header {
-      padding: 22px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #1c2028;
-      position: sticky;
-      top: 0;
-      background: rgba(7,9,13,.95);
-      backdrop-filter: blur(10px);
-      z-index: 10;
-    }
+body{
+  background:#f7f8fa;
+  color:#171717;
+}
 
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      color: #fff;
-    }
+header{
+  height:72px;
+  padding:0 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#fff;
+  border-bottom:1px solid #e8e8e8;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
 
-    .logo span {
-      color: #00aaff;
-    }
+.logo{
+  font-size:23px;
+  font-weight:900;
+}
 
-    nav a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 25px;
-      font-weight: 700;
-    }
+.logo span{
+  color:#e63946;
+}
 
-    nav a:hover {
-      color: #00aaff;
-    }
+nav a{
+  text-decoration:none;
+  color:#444;
+  margin-left:25px;
+  font-weight:700;
+}
 
-    .hero {
-      min-height: 75vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 20px;
-      background:
-        radial-gradient(circle at center, #08233b 0%, #07090d 55%);
-    }
+nav a:hover{
+  color:#e63946;
+}
 
-    .hero h1 {
-      font-size: clamp(45px, 8vw, 90px);
-      font-weight: 1000;
-      letter-spacing: -4px;
-    }
+.hero{
+  min-height:72vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:80px 20px;
+  background:
+    radial-gradient(circle at center,#ffe7e9 0%,#f7f8fa 60%);
+}
 
-    .hero h1 span {
-      color: #00aaff;
-    }
+.hero-content{
+  max-width:800px;
+}
 
-    .hero p {
-      margin: 20px auto;
-      max-width: 650px;
-      color: #aaa;
-      font-size: 18px;
-      line-height: 1.6;
-    }
+.badge{
+  display:inline-block;
+  background:#fff;
+  border:1px solid #eee;
+  padding:8px 15px;
+  border-radius:30px;
+  color:#e63946;
+  font-weight:800;
+  margin-bottom:20px;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 16px 30px;
-      border-radius: 12px;
-      background: #00aaff;
-      color: white;
-      text-decoration: none;
-      font-weight: 900;
-      border: none;
-      cursor: pointer;
-      transition: .2s;
-      box-shadow: 0 0 25px rgba(0,170,255,.25);
-    }
+h1{
+  font-size:clamp(45px,8vw,85px);
+  line-height:.95;
+  letter-spacing:-4px;
+}
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 35px rgba(0,170,255,.5);
-    }
+h1 span{
+  color:#e63946;
+}
 
-    section {
-      padding: 80px 8%;
-    }
+.hero p{
+  max-width:650px;
+  margin:25px auto;
+  color:#666;
+  font-size:18px;
+  line-height:1.6;
+}
 
-    .title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
+.btn{
+  display:inline-block;
+  padding:16px 30px;
+  border-radius:12px;
+  background:#e63946;
+  color:white;
+  text-decoration:none;
+  font-weight:900;
+  transition:.2s;
+  border:none;
+  cursor:pointer;
+}
 
-    .title h2 {
-      font-size: 38px;
-    }
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(230,57,70,.2);
+}
 
-    .title p {
-      color: #888;
-      margin-top: 10px;
-    }
+section{
+  padding:80px 8%;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+.title{
+  text-align:center;
+  margin-bottom:45px;
+}
 
-    .card {
-      background: #0d1118;
-      border: 1px solid #1b2430;
-      padding: 30px;
-      border-radius: 18px;
-      transition: .2s;
-    }
+.title h2{
+  font-size:38px;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #00aaff;
-    }
+.title p{
+  color:#777;
+  margin-top:10px;
+}
 
-    .card h3 {
-      margin-bottom: 10px;
-    }
+.cards{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+}
 
-    .price {
-      color: #00aaff;
-      font-size: 30px;
-      font-weight: 900;
-      margin: 15px 0;
-    }
+.card{
+  background:#fff;
+  border:1px solid #e8e8e8;
+  border-radius:18px;
+  padding:30px;
+  text-align:center;
+  transition:.2s;
+}
 
-    .pack {
-      max-width: 650px;
-      margin: auto;
-      text-align: center;
-      padding: 45px;
-      border-radius: 25px;
-      border: 1px solid #00aaff;
-      background: linear-gradient(145deg, #0d1823, #090c11);
-      box-shadow: 0 0 50px rgba(0,170,255,.12);
-    }
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 35px rgba(0,0,0,.07);
+}
 
-    .pack h2 {
-      font-size: 40px;
-    }
+.icon{
+  font-size:42px;
+  margin-bottom:15px;
+}
 
-    .pack ul {
-      list-style: none;
-      margin: 25px 0;
-      color: #bbb;
-      line-height: 2;
-    }
+.card h3{
+  margin-bottom:10px;
+}
 
-    .pack ul li::before {
-      content: "✓ ";
-      color: #00aaff;
-      font-weight: bold;
-    }
+.card p{
+  color:#777;
+  line-height:1.5;
+}
 
-    form {
-      max-width: 650px;
-      margin: auto;
-      background: #0d1118;
-      padding: 35px;
-      border-radius: 20px;
-      border: 1px solid #1b2430;
-    }
+.donate{
+  max-width:750px;
+  margin:auto;
+  text-align:center;
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:25px;
+  padding:50px 30px;
+  box-shadow:0 15px 50px rgba(0,0,0,.06);
+}
 
-    input,
-    textarea,
-    select {
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 10px;
-      border: 1px solid #252d38;
-      background: #080b10;
-      color: white;
-      outline: none;
-    }
+.donate h2{
+  font-size:42px;
+  margin-bottom:15px;
+}
 
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
+.donate p{
+  color:#777;
+  line-height:1.6;
+  margin-bottom:25px;
+}
 
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: #00aaff;
-    }
+.notice{
+  margin-top:25px;
+  font-size:13px;
+  color:#888;
+}
 
-    footer {
-      text-align: center;
-      padding: 35px;
-      border-top: 1px solid #1c2028;
-      color: #666;
-    }
+footer{
+  background:#171717;
+  color:#888;
+  text-align:center;
+  padding:35px;
+}
 
-    @media (max-width: 700px) {
-      nav {
-        display: none;
-      }
+footer strong{
+  color:#fff;
+}
 
-      .hero h1 {
-        letter-spacing: -2px;
-      }
+@media(max-width:700px){
+  nav{
+    display:none;
+  }
 
-      .pack {
-        padding: 30px 20px;
-      }
-    }
-  </style>
+  h1{
+    letter-spacing:-2px;
+  }
+
+  section{
+    padding:60px 5%;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">CREATOR<span>X</span></div>
+  <div class="logo">
+    POMOC<span>.</span>
+  </div>
 
   <nav>
-    <a href="#services">Services</a>
-    <a href="#pack">Creator Pack</a>
-    <a href="#order">Order</a>
+    <a href="#pomoc">Jak pomáháme</a>
+    <a href="#dar">Darovat</a>
   </nav>
 </header>
 
+
 <section class="hero">
-  <div>
-    <h1>MAKE YOUR <span>CONTENT</span> HIT.</h1>
+
+  <div class="hero-content">
+
+    <div class="badge">
+      ❤️ Pomoc lidem v nouzi
+    </div>
+
+    <h1>
+      KAŽDÝ DAR<br>
+      MÁ <span>SMYSL.</span>
+    </h1>
 
     <p>
-      Thumbnails, profile pictures, banners and short edits
-      designed to make your content look better.
+      Podpořte práci organizace Člověk v tísni.
+      Váš dar můžete věnovat přímo na jejich oficiální
+      darovací stránce.
     </p>
 
-    <a class="btn" href="#pack">VIEW CREATOR PACK</a>
+    <a
+      class="btn"
+      href="https://www.clovekvtisni.cz/darujte/jednorazove"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      ❤️ CHCI DAROVAT
+    </a>
+
   </div>
+
 </section>
 
-<section id="services">
+
+<section id="pomoc">
 
   <div class="title">
-    <h2>Services</h2>
-    <p>Simple prices. Clean designs.</p>
+    <h2>Kam může pomoc směřovat?</h2>
+    <p>Vyberte si účel přímo na oficiální stránce organizace.</p>
   </div>
 
   <div class="cards">
 
     <div class="card">
-      <h3>YouTube Thumbnail</h3>
-      <p>Eye-catching thumbnail for your video.</p>
-      <div class="price">100 Kč</div>
+      <div class="icon">🌍</div>
+      <h3>Humanitární pomoc</h3>
+      <p>
+        Podpora lidí zasažených krizemi
+        a přírodními katastrofami.
+      </p>
     </div>
 
     <div class="card">
-      <h3>Profile Picture</h3>
-      <p>Custom profile picture for YouTube, Discord or gaming.</p>
-      <div class="price">150 Kč</div>
+      <div class="icon">🏠</div>
+      <h3>Pomoc lidem v nouzi</h3>
+      <p>
+        Podpora lidí, kteří potřebují
+        sociální nebo finanční pomoc.
+      </p>
     </div>
 
     <div class="card">
-      <h3>Banner</h3>
-      <p>Clean banner for your social media.</p>
-      <div class="price">150 Kč</div>
+      <div class="icon">📚</div>
+      <h3>Vzdělávání</h3>
+      <p>
+        Podpora vzdělávacích programů
+        a kritického myšlení.
+      </p>
     </div>
 
     <div class="card">
-      <h3>Short Edit</h3>
-      <p>Short-form edit for TikTok, Shorts or Reels.</p>
-      <div class="price">250 Kč</div>
+      <div class="icon">❤️</div>
+      <h3>Další sbírky</h3>
+      <p>
+        Na oficiální stránce si můžete
+        vybrat z aktuálních sbírek.
+      </p>
     </div>
 
   </div>
+
 </section>
 
-<section id="pack">
 
-  <div class="pack">
+<section id="dar">
 
-    <h2>CREATOR PACK</h2>
+  <div class="donate">
 
-    <div class="price">499 Kč</div>
+    <h2>Chcete pomoci?</h2>
 
-    <ul>
-      <li>3× YouTube Thumbnail</li>
-      <li>1× Profile Picture</li>
-      <li>1× Banner</li>
-      <li>1× Short Edit</li>
-    </ul>
+    <p>
+      Kliknutím na tlačítko budete přesměrováni
+      přímo na oficiální stránku Člověka v tísni,
+      kde si můžete zvolit částku a účel svého daru.
+    </p>
 
     <a
       class="btn"
-      href="https://paypal.me/KokotAdamek"
+      href="https://www.clovekvtisni.cz/darujte/jednorazove"
       target="_blank"
       rel="noopener noreferrer"
     >
-      PAY 499 Kč
+      DAROVAT LIBOVOLNOU ČÁSTKU
     </a>
 
-    <p style="margin-top:20px;color:#777;font-size:13px;">
-      You will be redirected to PayPal.
-    </p>
+    <div class="notice">
+      Tento web pouze odkazuje na oficiální darovací stránku
+      Člověka v tísni. Peníze nejdou přes tento web.
+    </div>
 
   </div>
 
 </section>
 
-<section id="order">
-
-  <div class="title">
-    <h2>Order</h2>
-    <p>Tell me what you need.</p>
-  </div>
-
-  <form id="orderForm">
-
-    <input
-      type="text"
-      id="name"
-      placeholder="Your name"
-      required
-    >
-
-    <input
-      type="email"
-      id="email"
-      placeholder="Your email"
-      required
-    >
-
-    <select id="service" required>
-      <option value="">Choose service</option>
-      <option>YouTube Thumbnail — 100 Kč</option>
-      <option>Profile Picture — 150 Kč</option>
-      <option>Banner — 150 Kč</option>
-      <option>Short Edit — 250 Kč</option>
-      <option>Creator Pack — 499 Kč</option>
-    </select>
-
-    <textarea
-      id="details"
-      placeholder="Describe what you want..."
-      required
-    ></textarea>
-
-    <button class="btn" type="submit">
-      SEND ORDER
-    </button>
-
-  </form>
-
-</section>
 
 <footer>
-  © 2026 CREATORX — Creator Services
+  <strong>POMOC.</strong><br><br>
+  Pro skutečný dar používejte oficiální web organizace.
 </footer>
-
-<script>
-  document.getElementById("orderForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const name = document.getElementById("name").value;
-
-    alert(
-      "Thanks " + name +
-      "! Your order request has been received. " +
-      "I will contact you soon."
-    );
-
-    this.reset();
-  });
-</script>
 
 </body>
 </html>
